@@ -12,6 +12,7 @@ class Platform extends Site_controller {
   public function login () {
     if (identity ()->user ())
       return redirect ('');
+
     $message = identity ()->get_session ('_flash_message', true);
     $email   = identity ()->get_session ('email', true);
     $this->load_view (array ('message' => $message, 'email' => $email));
