@@ -24,3 +24,6 @@ command/compass/.sass-cache/*
 command/gulp/node_modules/*
 command/gulp/.sass-cache/*
 command/gulp/npm-debug.log
+
+vendor/*
+composer.lock

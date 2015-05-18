@@ -25,8 +25,8 @@ class Migration_Add_users extends CI_Migration {
     );
 
     $this->db->query (
-      "INSERT INTO `users` (`id`, `email`, `password`, `name`, `login_count`, `logined_at`, `created_at`, `updated_at`)
-        VALUES (1, 'root@mazu.ioa.tw', '" . md5 ('123456') . "', 'OA', 0, '" . date ('Y-m-d H:i:s') . "', '" . date ('Y-m-d H:i:s') . "', '" . date ('Y-m-d H:i:s') . "');"
+      "INSERT INTO `users` (`id`, `email`, `password`, `name`, `avatar`, `login_count`, `logined_at`, `created_at`, `updated_at`)
+        VALUES (1, 'root@mazu.ioa.tw', '" . md5 ('123456') . "', 'OA', '', 0, '" . date ('Y-m-d H:i:s') . "', '" . date ('Y-m-d H:i:s') . "', '" . date ('Y-m-d H:i:s') . "');"
     );
   }
   public function down () {
