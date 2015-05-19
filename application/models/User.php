@@ -24,4 +24,11 @@ class User extends OaModel {
     OrmImageUploader::bind ('avatar', 'UserAvatarImageUploader');
 
   }
+
+  public function is_editor () {
+    return $this->permission == 5;
+  }
+  public function is_root () {
+    return $this->permission == 9;
+  }
 }

@@ -12,11 +12,11 @@
       <label class='l' for='password'>密  碼</label>
       <input type='password' class='r' name='password' id='password' value='' placeholder='輸入密碼(6個英、數字元以上)..' pattern="<?php echo trim (Cfg::setting ('format', 'user', 'password'), '/');?>" required title="輸入密碼(6個英、數字元以上).."/>
     </div>
-    
-<?php 
+
+<?php
     if (isset ($message) && $message) { ?>
       <div class='row error'><?php echo $message;?></div>
-<?php 
+<?php
     } ?>
 
     <div class='row split-right'>

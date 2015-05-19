@@ -105,6 +105,7 @@ class Platform extends Site_controller {
         'email' => $email,
         'password' => password ($password),
         'avatar' => '',
+        'permission' => '1',
         'login_count' => 0,
         'logined_at' => date ('Y-m-d H:i:s')
       );

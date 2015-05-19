@@ -15,12 +15,18 @@ class Frame_cell extends Cell_Controller {
     $as = array (
       'l' => array (
         array ('name' => '首頁', 'href' => base_url (), 'show' => true),
-        array ('name' => 'Apple', 'href' => base_url ('apples'), 'show' => true),
+        array ('name' => '記載北港', 'href' => base_url ('articles'), 'show' => true),
+        array ('name' => '相簿紀錄', 'href' => base_url ('articles'), 'show' => true),
+        array ('name' => '傳統藝陣', 'href' => base_url ('articles'), 'show' => true),
+        array ('name' => '地圖故事', 'href' => base_url ('articles'), 'show' => true),
+        array ('name' => '三月十九', 'href' => base_url ('articles'), 'show' => true),
+        // array ('name' => '笨港到北港', 'href' => base_url ('articles'), 'show' => true),
         ),
       'r' => array (
         array ('name' => '登入', 'href' => base_url ('platform/login'), 'show' => identity ()->user () ? false : true),
         array ('name' => '登出', 'href' => base_url ('platform/logout'), 'show' => identity ()->user () ? true : false),
         array ('name' => '註冊', 'href' => base_url ('platform/register'), 'show' => identity ()->user () ? false : true),
+        array ('name' => '後台', 'href' => base_url ('admin'), 'show' => identity ()->user () && (identity ()->user ()->is_editor () || identity ()->user ()->is_root ())),
         ),
       );
     return $this->setUseCssList (true)
