@@ -9,7 +9,11 @@ class Admin_controller extends Oa_controller {
 
   public function __construct () {
     parent::__construct ();
+
     $this->load->helper ('identity');
+
+    if (!(identity ()->user () && (identity ()->user ()->is_editor () || identity ()->user ()->is_root ())))
+      return redirect ();
 
     $this
          ->set_componemt_path ('component', 'admin')

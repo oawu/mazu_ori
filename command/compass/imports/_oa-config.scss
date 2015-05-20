@@ -7,6 +7,9 @@ $mainWidth: 960px !global;
 $mainBackgroundColor: rgba(255, 255, 255, 1) !global;
 $mainBackgroundImage: image-url('bg/grunge.png', false, false) !global;
 
+$navbarHeight: 35px !global;
+$footerHeight: 50px !global;
+
 $btns: (
   'red':  (244, 67, 54, 1),
   'pink':  (233, 30, 99, 1),

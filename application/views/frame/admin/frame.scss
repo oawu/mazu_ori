@@ -7,6 +7,20 @@
 
 html {
   body {
+    .center {
+      margin: 5px 0;
+      // border: 1px solid rgba(255, 0, 0, .3);
 
+      @include split-left(220px, '.left', '.right');
+
+      .left, .right {
+        // border: 1px solid rgba(255, 0, 0, .3);
+      }
+      .right {
+        padding: 10px;
+        text-align: left;
+        // border: 1px solid rgba(255, 0, 0, .3);
+      }
+    }
   }
 }

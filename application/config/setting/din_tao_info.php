@@ -4,4 +4,9 @@
  * @author      OA Wu <comdan66@gmail.com>
  * @copyright   Copyright (c) 2015 OA Wu Design
  */
-$main['site']['setting'] = 3;
+
+$din_tao_info['types'] = array (
+    0 => '地方陣頭',
+    1 => '駕前陣頭',
+    2 => '其他',
+  );
