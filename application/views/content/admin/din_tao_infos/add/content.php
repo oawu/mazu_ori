@@ -45,7 +45,7 @@
           <tr>
             <th>內容</th>
             <td>
-              <textarea name='content' placeholder='請輸入內容..' pattern='.{1,}' required title='輸入至少 1 個字元!' ><?php echo $content;?></textarea>
+              <textarea id='content' name='content' placeholder='請輸入內容..' pattern='.{1,}' required title='輸入至少 1 個字元!' ><?php echo $content;?></textarea>
             </td>
           </tr>
           <tr>

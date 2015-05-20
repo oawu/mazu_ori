@@ -5,6 +5,12 @@
  * @copyright   Copyright (c) 2015 OA Wu Design
  */
 
+if (!function_exists ('remove_ckedit_tag')) {
+  function remove_ckedit_tag ($text) {
+    return preg_replace ("/\s+/", " ", preg_replace ("/&#?[a-z0-9]+;/i", "", (trim (strip_tags ($text)))));
+  }
+}
+
 if (!function_exists ('password')) {
   function password ($password) {
     return md5 ($password);

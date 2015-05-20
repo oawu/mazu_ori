@@ -36,6 +36,14 @@ class Din_tao_infos extends Admin_controller {
                     && redirect (array ('admin', 'din_tao_infos'), 'refresh');
   }
 
+  public function upload_ckedit () {
+    $url = base_url ('temp', 'a.jpg');
+    $message = '上傳成功';
+
+    $funcNum = $_GET['CKEditorFuncNum'];
+
+    echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction ($funcNum, '$url', '$message');</script>";
+  }
   public function edit ($id = 0) {
     if (!($din_tao_info = DinTaoInfo::find_by_id ($id)))
       return redirect (array ('admin', 'din_tao_infos'));
@@ -45,7 +53,8 @@ class Din_tao_infos extends Admin_controller {
     $type    = identity ()->get_session ('type', true);
     $content = identity ()->get_session ('content', true);
 
-    $this->load_view (array (
+    $this->add_hidden (array ('id' => 'upload_ckedit_url', 'value' => base_url ('admin', 'din_tao_infos', 'upload_ckedit')))
+         ->load_view (array (
         'message' => $message,
         'name' => $name,
         'type' => $type,
@@ -64,9 +73,8 @@ class Din_tao_infos extends Admin_controller {
 
     $name    = trim ($this->input_post ('name'));
     $type    = trim ($this->input_post ('type'));
-    $content = trim ($this->input_post ('content'));
+    $content = trim ($this->input_post ('content', false, false));
     $cover   = $this->input_post ('cover', true);
-
 
     if (!($name && in_array ($type, array_keys (Cfg::setting ('din_tao_info', 'types'))) && $content))
       return identity ()->set_session ('_flash_message', '填寫資訊有少！', true)
@@ -103,7 +111,8 @@ class Din_tao_infos extends Admin_controller {
     $type    = identity ()->get_session ('type', true);
     $content = identity ()->get_session ('content', true);
 
-    $this->load_view (array (
+    $this->add_hidden (array ('id' => 'upload_ckedit_url', 'value' => base_url ('admin', 'din_tao_infos', 'upload_ckedit')))
+         ->load_view (array (
         'message' => $message,
         'name' => $name,
         'type' => $type,
@@ -117,7 +126,7 @@ class Din_tao_infos extends Admin_controller {
 
     $name    = trim ($this->input_post ('name'));
     $type    = trim ($this->input_post ('type'));
-    $content = trim ($this->input_post ('content'));
+    $content = trim ($this->input_post ('content', false, false));
     $cover   = $this->input_post ('cover', true);
 
     if (!($name && in_array ($type, array_keys (Cfg::setting ('din_tao_info', 'types'))) && $content && $cover))
