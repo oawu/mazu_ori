@@ -37,13 +37,15 @@ class Din_tao_infos extends Admin_controller {
   }
 
   public function upload_ckedit () {
-    $url = base_url ('temp', 'a.jpg');
-    $message = '上傳成功';
-
     $funcNum = $_GET['CKEditorFuncNum'];
+    $upload = $this->input_post ('upload', true);
 
-    echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction ($funcNum, '$url', '$message');</script>";
+    if (!($upload && verifyCreateOrm ($pic = DinTaoInfoPic::create (array ('name' => ''))) && $pic->name->put ($upload, true)))
+      echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction ($funcNum, '', '上傳失敗！');</script>";
+    else
+      echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction ($funcNum, '" . $pic->name->url ('640w') . "', '上傳成功！');</script>";
   }
+
   public function edit ($id = 0) {
     if (!($din_tao_info = DinTaoInfo::find_by_id ($id)))
       return redirect (array ('admin', 'din_tao_infos'));
@@ -86,6 +88,7 @@ class Din_tao_infos extends Admin_controller {
     $din_tao_info->name = $name;
     $din_tao_info->type = $type;
     $din_tao_info->content = $content;
+
     if (!$din_tao_info->save ())
       return identity ()->set_session ('_flash_message', '修改失敗！', true)
                   ->set_session ('name', $name, true)
@@ -105,7 +108,6 @@ class Din_tao_infos extends Admin_controller {
   }
 
   public function add () {
-
     $message = identity ()->get_session ('_flash_message', true);
     $name    = identity ()->get_session ('name', true);
     $type    = identity ()->get_session ('type', true);

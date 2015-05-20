@@ -5,13 +5,13 @@
  * @copyright   Copyright (c) 2015 OA Wu Design
  */
 
-class DinTaoInfoCoverImageUploader extends OrmImageUploader {
+class DinTaoInfoPicNameImageUploader extends OrmImageUploader {
 
   public function getVersions () {
     return array (
         '' => array (),
-        '50x50c' => array ('adaptiveResizeQuadrant', 50, 50, 'c'),
-        '100w' => array ('resize', 100, 100, 'width')
+        '100x100c' => array ('resize', 100, 100, 'c'),
+        '640w' => array ('resize', 640, 640, 'width')
       );
   }
 }
